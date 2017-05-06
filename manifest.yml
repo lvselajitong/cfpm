@@ -1,0 +1,13 @@
+---
+# This is a minimal manifest
+applications:
+- name: cfpm
+  host: cfpm
+  domain: cfapps.io
+  instances: 1
+  memory: 1024M
+  path: target/cfpm-0.0.1.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  env:
+    API_ENDPOINT: http://api.run.pivotal.io
+    APPLICATION_DOMAIN: cfpm.cfapps.io

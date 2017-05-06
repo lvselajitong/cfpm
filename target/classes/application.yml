@@ -1,0 +1,37 @@
+cf:
+  api: http://api.run.pivotal.io/
+  uaa: https://uaa.run.pivotal.io/
+  client: 18292882256@163.com
+  secret: Tian1hong!
+  
+---
+spring:
+  profiles: default,development  
+server:
+  port: 8081
+eureka:
+  server: 
+    enable-self-preservation: false
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      
+---
+spring:
+  profiles: cloud
+server:
+  port: 0
+eureka:
+  instance:
+    hostname: ${vcap.application.uris[0]}
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    secure-port: 443
+  server: 
+    enable-self-preservation: false
+  client:
+    serviceUrl:
+      defaultZone: https://localhost:8761/eureka
+      
+
+
